@@ -1,0 +1,604 @@
+/*! Swipebox v1.3.0 | Constantin Saguin csag.co | MIT License | github.com/brutaldesign/swipebox */
+
+html.swipebox-html.swipebox-touch {
+  overflow: hidden !important;
+}
+
+#swipebox-overlay {
+  position: fixed;
+  z-index: 99999 !important;
+  top: 0;
+  left: 0;
+
+  overflow: hidden;
+
+  width: 100%;
+  height: 100%;
+
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  img {
+    border: none !important;
+  }
+}
+
+#swipebox-container {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+}
+
+#swipebox-slider {
+  position: absolute;
+  top: 50px;
+  left: 0;
+
+  display: none;
+  /*  height: 100%;
+  top: 0;*/
+
+  width: 100%;
+  height: calc(100% - 140px);
+
+  -webkit-transition: -webkit-transform .4s ease;
+          transition:         transform .4s ease;
+  white-space: nowrap;
+  /*
+  cursor: pointer;*/
+}
+
+/*
+.single-post #swipebox-slider {
+    height: calc(100% - 100px);
+}
+.single-post #swipebox-share {
+  display: none;
+}
+*/
+
+.hidden-panels #swipebox-slider {
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+}
+
+#swipebox-slider {
+  .slide {
+    line-height: 1px;
+
+    display: inline-block;
+
+    width: 100%;
+    height: 100%;
+
+    text-align: center;
+    &:before {
+      display: inline-block;
+
+      width: 1px;
+      height: 50%;
+      margin-right: -1px;
+
+      content: '';
+    }
+    img,
+    .swipebox-video-container,
+    .swipebox-inline-container {
+      display: inline-block;
+
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 100%;
+      margin: 0;
+      padding: 0;
+
+      vertical-align: middle;
+    }
+    .swipebox-video-container {
+      -webkit-box-sizing: border-box;
+              box-sizing: border-box;
+      width: 100%;
+      max-width: 1140px;
+      max-height: 100%;
+      padding: 5%;
+
+      background: none;
+      .swipebox-video {
+        position: relative;
+
+        overflow: hidden;
+
+        width: 100%;
+        height: 0;
+        padding-bottom: 56.25%;
+        iframe {
+          position: absolute;
+          top: 0;
+          left: 0;
+
+          width: 100% !important;
+          height: 100% !important;
+        }
+      }
+    }
+  }
+  .slide-loading {
+    background: url(../img/loader.gif) no-repeat center center;
+  }
+}
+
+#swipebox-bottom-bar,
+#swipebox-top-bar {
+  position: absolute;
+  z-index: 999;
+  left: 0;
+
+  width: 100%;
+  height: 100px;
+
+  -webkit-transition: .5s;
+          transition: .5s;
+}
+
+#swipebox-bottom-bar {
+  bottom: -100px;
+  &.visible-bars {
+    -webkit-transform: translate3d(0, -100px, 0);
+            transform: translate3d(0, -100px, 0);
+  }
+}
+
+#swipebox-top-bar {
+  top: 50%;
+  &.visible-bars {
+    -webkit-transform: translate3d(0, 50px, 0);
+            transform: translate3d(0, 50px, 0);
+  }
+}
+
+.mobiled #swipebox-top-bar.visible-bars {
+  -webkit-transform: translate3d(0, 66px, 0);
+          transform: translate3d(0, 66px, 0);
+}
+
+#swipebox-title {
+  font-family: 'Ubuntu-Conv';
+  font-size: 20px;
+  font-style: normal;
+
+  position: absolute;
+  top: 20px;
+  left: 0;
+
+  width: 100%;
+
+  text-align: center;
+
+  color: #fff;
+}
+
+#swipebox-share {
+  position: absolute;
+  top: 38px;
+  left: 50%;
+
+  width: 270px;
+  margin-left: -135px;
+
+  text-align: center;
+}
+
+#swipebox-close {
+  position: relative;
+  top: 0;
+
+  width: 17px;
+  height: 15px;
+
+  cursor: pointer;
+}
+
+.close {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 17px;
+  height: 15px;
+
+  cursor: pointer;
+  -webkit-transition: fill .3s ease;
+          transition: fill .3s ease;
+
+  fill: #fff;
+}
+
+#swipebox-close:hover .close {
+  fill: #e77983;
+}
+
+#swipebox-prev {
+  left: 38px;
+}
+
+#swipebox-next {
+  right: 38px;
+}
+
+#swipebox-prev,
+#swipebox-next {
+  position: absolute;
+  top: 50%;
+
+  width: 57px;
+  height: 57px;
+  margin-top: -28px;
+
+  border: 1px solid #fff;
+}
+
+.desctoped {
+  #swipebox-prev:not(.disabled),
+  #swipebox-next:not(.disabled) {
+    -webkit-animation-name: 'pulse_animation';
+    -webkit-animation-duration: 2000ms;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+  }
+  #swipebox-prev:not(.disabled):hover,
+  #swipebox-next:not(.disabled):hover {
+    cursor: pointer;
+
+    border-color: #e77983;
+  }
+  #swipebox-prev:not(.disabled):hover .slider-arrow-left,
+  #swipebox-next:not(.disabled):hover .slider-arrow-right {
+    fill: #e77983;
+  }
+  #swipebox-prev:not(.disabled) .slider-arrow-left,
+  #swipebox-next:not(.disabled) .slider-arrow-right {
+    -webkit-animation-name: 'pulse_animation2';
+    -webkit-animation-duration: 2000ms;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+  }
+}
+
+#swipebox-close {
+  position: absolute;
+  z-index: 9999;
+  top: 20px;
+  right: 30px;
+
+  background-position: 15px 12px;
+}
+
+#swipebox-counter {
+  font-family: 'Ubuntu-Conv';
+  font-size: 18px;
+  font-style: normal;
+
+  position: absolute;
+  top: 50%;
+  right: 0;
+
+  width: 57px;
+  height: 57px;
+  margin-top: 45px;
+
+  text-align: right;
+
+  color: #fff;
+}
+
+.swipebox-no-close-button #swipebox-close {
+  display: none;
+}
+
+#swipebox-prev.disabled,
+#swipebox-next.disabled {
+  opacity: .3;
+}
+
+.swipebox-no-touch #swipebox-overlay {
+  &.rightSpring #swipebox-slider {
+    -webkit-animation: rightSpring .3s;
+            animation: rightSpring .3s;
+  }
+  &.leftSpring #swipebox-slider {
+    -webkit-animation: leftSpring .3s;
+            animation: leftSpring .3s;
+  }
+}
+
+.swipebox-touch {
+  #swipebox-container {
+    &:before,
+    &:after {
+      position: absolute;
+      z-index: 999;
+      top: 0;
+
+      width: 20px;
+      height: 100%;
+
+      content: ' ';
+      -webkit-transition: all .3s ease;
+              transition: all .3s ease;
+
+      opacity: 0;
+
+      -webkit-backface-visibility: hidden;
+              backface-visibility: hidden;
+    }
+    &:before {
+      left: 0;
+
+      -webkit-box-shadow: inset 10px 0 10px -8px #656565;
+              box-shadow: inset 10px 0 10px -8px #656565;
+    }
+    &:after {
+      right: 0;
+
+      -webkit-box-shadow: inset -10px 0 10px -8px #656565;
+              box-shadow: inset -10px 0 10px -8px #656565;
+    }
+  }
+  #swipebox-overlay {
+    &.leftSpringTouch #swipebox-container:before,
+    &.rightSpringTouch #swipebox-container:after {
+      opacity: 1;
+    }
+  }
+}
+
+@-webkit-keyframes rightSpring {
+  0% {
+    left: 0;
+  }
+
+  50% {
+    left: -30px;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes rightSpring {
+  0% {
+    left: 0;
+  }
+
+  50% {
+    left: -30px;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+@-webkit-keyframes leftSpring {
+  0% {
+    left: 0;
+  }
+
+  50% {
+    left: 30px;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes leftSpring {
+  0% {
+    left: 0;
+  }
+
+  50% {
+    left: 30px;
+  }
+
+  100% {
+    left: 0;
+  }
+}
+
+@media screen and (min-width: 800px) {
+  #swipebox-close {
+    right: 37px;
+  }
+
+  #swipebox-counter {
+    right: 38px;
+  }
+
+  #swipebox-prev {
+    left: 38px;
+  }
+
+  #swipebox-next {
+    right: 38px;
+  }
+
+  /*  #swipebox-overlay {
+    padding: 27px 0 140px;
+  }
+*/
+}
+
+/* Skin
+--------------------------*/
+
+#swipebox-overlay {
+  background: rgba(0, 0, 0, .86);
+}
+
+#swipebox-bottom-bar {
+  color: #fff;
+}
+
+#swipebox-top-bar {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  line-height: 43px;
+
+  color: #fff;
+  color: white !important;
+}
+
+/*for mobile devices */
+
+.mobiled {
+  #swipebox-slider {
+    top: 0;
+
+    height: 100%;
+  }
+  #swipebox-top-bar {
+    top: -80px;
+    /*background-color: rgba(0,0,0,.7);*/
+  }
+  #swipebox-close {
+    top: 45px;
+    right: 21px;
+  }
+  #swipebox-share {
+    right: auto;
+    left: 21px;
+
+    text-align: left;
+  }
+  #swipebox-title {
+    line-height: normal;
+
+    top: 36px;
+
+    overflow: hidden;
+
+    height: 34px;
+    padding: 0 40px;
+
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  #swipebox-counter {
+    position: absolute;
+    top: 34px;
+
+    width: 100%;
+    height: 57px;
+    margin-top: 0;
+
+    text-align: center;
+  }
+}
+
+#swipebox-counter-icon {
+  position: relative;
+  top: 5px;
+
+  display: inline-block;
+
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+
+  background-image: url('../img/swipebox-counter.svg');
+  -webkit-background-size: 22px 22px;
+          background-size: 22px 22px;
+}
+
+.mobiled {
+  #swipebox-prev,
+  #swipebox-next {
+    z-index: 1000;
+
+    margin-top: -24px;
+
+    border: none;
+    background-image: url('../img/swipebox-arrow.svg') !important;
+    background-repeat: no-repeat;
+    background-position: center center;
+    -webkit-background-size: 16px 30px;
+            background-size: 16px 30px;
+  }
+  #swipebox-prev {
+    left: 11px;
+
+    -webkit-transform: rotate(180deg);
+       -moz-transform: rotate(180deg);
+            transform: rotate(180deg);
+  }
+  #swipebox-next {
+    right: 11px;
+  }
+  #swipebox-bottom-bar {
+    height: 90px;
+    /*background-color: rgba(0,0,0,.7);*/
+    .Aligner {
+      height: 90px;
+    }
+  }
+}
+
+@media all and (max-width: 640px) {
+  .mobiled {
+    #swipebox-share {
+      top: 26px;
+      left: 5px;
+    }
+    #swipebox-close {
+      top: 38px;
+      right: 14px;
+    }
+    #swipebox-prev,
+    #swipebox-next {
+      margin-top: -7px;
+
+      -webkit-background-size: 10px 20px;
+              background-size: 10px 20px;
+    }
+    #swipebox-prev {
+      left: -9px;
+    }
+    #swipebox-next {
+      right: -9px;
+    }
+    #swipebox-top-bar {
+      height: 80px;
+    }
+    #swipebox-counter {
+      top: 51px;
+    }
+    #swipebox-title {
+      font-size: 17px;
+
+      top: 34px;
+    }
+  }
+}
+
+@media (max-height: 480px) {
+  /*  #swipebox-bottom-bar, #swipebox-top-bar {
+    height: 40px;
+  }
+  #swipebox-title {
+    margin-top: 0 !important;
+    font-size: 17px;
+  }
+  #swipebox-slider {
+    height: calc(100% - 50px);
+    top: 0;
+  }*/
+}

@@ -1,1 +1,0 @@
-{"@context":"http:\/\/schema.org","@type":"WebSite","url":"http:\/\/nataly-bolshakova.com.ua\/","name":"Nataly Bolshakova Interior Design","potentialAction":{"@type":"SearchAction","target":"http:\/\/nataly-bolshakova.com.ua\/?s={search_term_string}","query-input":"required name=search_term_string"}}
