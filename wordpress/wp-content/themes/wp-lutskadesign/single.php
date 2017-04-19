@@ -3,16 +3,8 @@
     <section id="single-new" class="">
       <div class="wrapper limited">
         <div class="filters button-group custom-select">
-          <div class="title">
-            <span id="title-text">Новости</span>
-            <svg preserveaspectratio="none" class="" id="filters-arrow-down" viewbox="0 0 28 15">
-              <use xlink:href="#arrow-down" />
-            </svg>
-          </div>
           <div class="options">
-            <button onclick="window.location.href='http://nataly-bolshakova.com.ua/blog/#filter=*'">Все</button>
-            <button class="is-checked" onclick="window.location.href='http://nataly-bolshakova.com.ua/blog/#filter=.news'">Новости</button>
-            <button class="" onclick="window.location.href='http://nataly-bolshakova.com.ua/blog/#filter=.press'">Пресса</button>
+            <?php if (function_exists('easy_breadcrumbs')) easy_breadcrumbs(); ?>
           </div>
         </div>
       </div>
@@ -52,6 +44,7 @@
                 </div>
               </div>
               <div class="content">
+
                 <h1><?php the_title(); ?></h1>
                 <hr>
                 <?php if(get_field('label')) { ?>

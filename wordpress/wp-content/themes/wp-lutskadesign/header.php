@@ -44,21 +44,6 @@
         <span class="sandwich"></span>
       </a>
     </div>
-
-    <div class="lang-selector">
-      <div id="lang_sel_list" class="lang_sel_list_horizontal">
-        <ul>
-          <li class="icl-ru">
-            <a href="http://nataly-bolshakova.com.ua/news/577/" class="lang_sel_sel                                        rus                    </a>
-          </li>
-          <li class="icl-en">
-            <a href="http://nataly-bolshakova.com.ua/en/news-en/victory-in-sbid-international-design-awards-2012/" class="lang_sel_other">
-                                        eng                    </a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
   </header>
   <div id="mob_menu">
     <nav class="side-menu">

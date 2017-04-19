@@ -234,13 +234,13 @@ function wpeExcerpt($length_callback = '', $more_callback = '') {
 
 //  Custom View Article link to Post
 //  RU: Добавляем "Читать дальше" к обрезанным записям
-/*
+
 function html5_blank_view_article($more) {
   global $post;
   return '... <!-- noindex --><a rel="nofollow" class="view-article" href="' . get_permalink($post->ID) . '">' . __('View Article', 'wpeasy') . '</a><!-- /noindex -->';
 }
 add_filter('excerpt_more', 'html5_blank_view_article'); // Add 'View Article' button instead of [...] for Excerpts
-*/
+
 // Remove the <div> surrounding the dynamic navigation to cleanup markup
 add_filter('wp_nav_menu_args', 'my_wp_nav_menu_args'); // Remove surrounding <div> from WP Navigation
 function my_wp_nav_menu_args($args = '') {
@@ -421,13 +421,10 @@ function single_result() {
 // хлебные крошки   http://dimox.name/wordpress-breadcrumbs-without-a-plugin/
 // < ?php if (function_exists('easy_breadcrumbs')) easy_breadcrumbs(); ? >
 
-// хлебные крошки   http://dimox.name/wordpress-breadcrumbs-without-a-plugin/
-// < ?php if (function_exists('easy_breadcrumbs')) easy_breadcrumbs(); ? >
-//
 function easy_breadcrumbs() {
 
   // Settings
-  $separator          = ' &raquo; ';
+  $separator          = ' ● ';
   $breadcrums_id      = 'breadcrumbs';
   $breadcrums_class   = 'breadcrumbs';
   $home_title         = 'Главная';
