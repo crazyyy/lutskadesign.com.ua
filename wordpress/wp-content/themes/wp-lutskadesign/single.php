@@ -1,37 +1,112 @@
 <?php get_header(); ?>
-  <?php if (have_posts()): while (have_posts()) : the_post(); ?>
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-      <h1 class="single-title inner-title"><?php the_title(); ?></h1>
-      <?php if ( has_post_thumbnail()) :?>
-        <a class="single-thumb" href="<?php the_permalink(); ?>" title="<?php the_title(); ?>">
-          <?php the_post_thumbnail(); // Fullsize image for the single post ?>
-        </a>
-      <?php endif; ?><!-- /post thumbnail -->
+    <section id="single-new" class="">
+      <div class="wrapper limited">
+        <div class="filters button-group custom-select">
+          <div class="title">
+            <span id="title-text">Новости</span>
+            <svg preserveaspectratio="none" class="" id="filters-arrow-down" viewbox="0 0 28 15">
+              <use xlink:href="#arrow-down" />
+            </svg>
+          </div>
+          <div class="options">
+            <button onclick="window.location.href='http://nataly-bolshakova.com.ua/blog/#filter=*'">Все</button>
+            <button class="is-checked" onclick="window.location.href='http://nataly-bolshakova.com.ua/blog/#filter=.news'">Новости</button>
+            <button class="" onclick="window.location.href='http://nataly-bolshakova.com.ua/blog/#filter=.press'">Пресса</button>
+          </div>
+        </div>
+      </div>
+      <div class="wrapper content-holder limited tablet-white-bg">
+        <div class="columns">
+          <?php if (have_posts()): while (have_posts()) : the_post(); ?>
+            <section class="page_content">
+              <div class="header">
+                <div class="img-container big-img" style="background-image: url(<?php the_post_thumbnail_url( 'medium' ); ?>); background-position: 50% 60%;">
+                  <div class="social">
+                    <a href="#" class="soc-icon">
+                      <svg preserveaspectratio="none" class="soc-icon-image" viewbox="0 0 32 32">
+                        <use xlink:href="#iconFb" />
+                      </svg>
+                    </a>
+                    <a href="#" class="soc-icon">
+                      <svg preserveaspectratio="none" class="soc-icon-image" viewbox="0 0 32 32">
+                        <use xlink:href="#iconGp" />
+                      </svg>
+                    </a>
+                    <a href="#" class="soc-icon">
+                      <svg preserveaspectratio="none" class="soc-icon-image" viewbox="0 0 32 32">
+                        <use xlink:href="#iconTw" />
+                      </svg>
+                    </a>
+                    <a href="#" class="soc-icon">
+                      <svg preserveaspectratio="none" class="soc-icon-image" viewbox="0 0 32 32">
+                        <use xlink:href="#iconVk" />
+                      </svg>
+                    </a>
+                    <a href="#" class="soc-icon">
+                      <svg preserveaspectratio="none" class="soc-icon-image" viewbox="0 0 32 32">
+                        <use xlink:href="#iconPt" />
+                      </svg>
+                    </a>
+                  </div><!-- social -->
+                </div>
+              </div>
+              <div class="content">
+                <h1><?php the_title(); ?></h1>
+                <hr>
+                <?php if(get_field('label')) { ?>
+                  <p class="label"><?php the_field('label') ?></p>
+                <?php } ?>
 
-      <span class="date"><?php the_time('d F Y'); ?> <?php the_time('H:i'); ?></span>
-      <span class="author"><?php _e( 'Published by', 'wpeasy' ); ?> <?php the_author_posts_link(); ?></span>
-      <span class="comments"><?php comments_popup_link( __( 'Leave your thoughts', 'wpeasy' ), __( '1 Comment', 'wpeasy' ), __( '% Comments', 'wpeasy' )); ?></span><!-- /post details -->
+                <?php the_content(); ?>
 
-      <?php the_content(); ?>
+              </div>
 
-      <?php the_tags( __( 'Tags: ', 'wpeasy' ), ', ', '<br>'); // Separated by commas with a line break at the end ?>
+              <div class="footer">
+                <div class="social">
+                  <span class="text">Рассказать друзьям:</span>
+                  <a href="#" class="soc-icon">
+                    <svg preserveaspectratio="none" class="soc-icon-image" viewbox="0 0 32 32">
+                      <use xlink:href="#iconFb" />
+                    </svg>
+                  </a>
+                  <a href="#" class="soc-icon">
+                    <svg preserveaspectratio="none" class="soc-icon-image" viewbox="0 0 32 32">
+                      <use xlink:href="#iconGp" />
+                    </svg>
+                  </a>
+                  <a href="#" class="soc-icon">
+                    <svg preserveaspectratio="none" class="soc-icon-image" viewbox="0 0 32 32">
+                      <use xlink:href="#iconTw" />
+                    </svg>
+                  </a>
+                  <a href="#" class="soc-icon">
+                    <svg preserveaspectratio="none" class="soc-icon-image" viewbox="0 0 32 32">
+                      <use xlink:href="#iconVk" />
+                    </svg>
+                  </a>
+                  <a href="#" class="soc-icon">
+                    <svg preserveaspectratio="none" class="soc-icon-image" viewbox="0 0 32 32">
+                      <use xlink:href="#iconPt" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </section>
+          <?php endwhile; endif; ?>
 
-      <p><?php _e( 'Categorised in: ', 'wpeasy' ); the_category(', '); // Separated by commas ?></p>
+          <?php get_sidebar(); ?>
 
-      <p><?php _e( 'This post was written by ', 'wpeasy' ); the_author(); ?></p>
+        </div>
 
-      <?php edit_post_link(); ?>
+        <div class="bottom-nav-buttons">
+          <div class="button-holder">
+            <a class="lookmore button" href="<?php echo home_url(); ?>/blog.htm">Все новости</a>
+          </div>
+        </div>
 
-      <?php comments_template(); ?>
+      </div>
+    </section>
+  </div>
 
-    </article>
-  <?php endwhile; else: ?>
-    <article>
-
-      <h2 class="page-title inner-title"><?php _e( 'Sorry, nothing to display.', 'wpeasy' ); ?></h2>
-
-    </article>
-  <?php endif; ?>
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

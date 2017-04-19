@@ -4212,7 +4212,11 @@ h5 a {
     }
   }
 }
-
+.content {
+  img {
+    max-width: 100%;
+  }
+}
 #single-new {
   background-color: #f4f4f4;
   .vegas-slide {
