@@ -34,17 +34,17 @@
             <a href="tel:+380675179595">+38 067 517 95 95</a>
           </div>
           <div class="social">
-            <a href="http://facebook.com/BolshakovaID" class="soc-icon external" target="_blank" rel="nofollow">
+            <a href="#" class="soc-icon external" target="_blank" rel="nofollow">
               <svg preserveaspectratio="none" class="soc-icon-image" viewbox="0 0 32 32">
                 <use xlink:href="#iconFb" />
               </svg>
             </a>
-            <a href="http://plus.google.com/+%D0%A1%D1%82%D1%83%D0%B4%D0%B8%D1%8F%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD%D0%B0%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D1%8C%D0%B5%D1%80%D0%B0%D0%9D%D0%B0%D1%82%D0%B0%D0%BB%D1%8C%D0%B8%D0%91%D0%BE%D0%BB%D1%8C%D1%88%D0%B0%D0%BA%D0%BE%D0%B2%D0%BE%D0%B9%D0%9A%D0%B8%D1%97%D0%B2/posts" class="soc-icon external" target="_blank" rel="nofollow">
+            <a href="#" class="soc-icon external" target="_blank" rel="nofollow">
               <svg preserveaspectratio="none" class="soc-icon-image" viewbox="0 0 32 32">
                 <use xlink:href="#iconGp" />
               </svg>
             </a>
-            <a href="http://www.instagram.com/natalybolshakova/" class="soc-icon external" target="_blank" rel="nofollow">
+            <a href="#" class="soc-icon external" target="_blank" rel="nofollow">
               <svg preserveaspectratio="none" class="soc-icon-image" viewbox="0 0 32 32">
                 <use xlink:href="#iconInst" />
               </svg>
@@ -141,13 +141,13 @@
         C7.199,6.862,6.474,7.601,6.487,8.464C6.501,9.312,7.196,9.998,8.044,9.999" />
   </svg>
   <!-- END: svg stuff  -->
+  <?php wp_footer(); ?>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/fontsmoothie.min.js" async></script>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/vegas.my.js"></script>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/isotope.pkgd.min.js"></script>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.swipebox.js"></script>
-  <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/functions-common.js"></script>
-  <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/inline_11.js"></script>
-  <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/sitepress.js"></script>
-</body>
+  <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/swiper.min.js"></script>
+  <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/scripts.js"></script>
 
+</body>
 </html>

@@ -1524,14 +1524,7 @@ html.swipebox-html.swipebox-touch {
   position: absolute;
   z-index: 10;
 
-  -webkit-transition: .3s;
-     -moz-transition: .3s;
-       -o-transition: .3s;
-          transition: .3s;
-  -webkit-transform: translate3d(0, 0, 0);
-      -ms-transform: translate3d(0, 0, 0);
-       -o-transform: translate3d(0, 0, 0);
-          transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
   text-align: center;
   &.swiper-pagination-hidden {
     opacity: 0;
@@ -1596,11 +1589,7 @@ button.swiper-pagination-bullet {
   top: 50%;
   right: 10px;
 
-  -webkit-transform: translate3d(0, -50%, 0);
-     -moz-transform: translate3d(0, -50%, 0);
-      -ms-transform: translate3d(0, -50%, 0);
-       -o-transform: translate(0, -50%);
-          transform: translate3d(0, -50%, 0);
+  transform: translate3d(0, -50%, 0);
   .swiper-pagination-bullet {
     display: block;
 
@@ -4455,12 +4444,24 @@ h5 a {
     }
     &.item-current {
       font-weight: normal;
+
       color: #e77983;
-      strong{
+      strong {
         font-weight: normal;
       }
     }
   }
+}
+#true_loadmore {
+  margin: 20px 0; /* отступы сверху и снизу от кнопки */
+  padding: 5px; /* отступы от границ 5px */
+
+  cursor: pointer; /* курсор мыши при наведении такой же, как при наведении на ссылку */
+  text-align: center; /* выравнивание текста по центру */
+
+  color: #fff; /* белый цвет текста */
+  border-radius: 4px; /* закругление углов */
+  background: #000; /* черный фон */
 }
 a.black-hover {
   display: block;
@@ -4481,7 +4482,45 @@ a.black-hover {
     display: block;
   }
 }
+.pagination {
+  padding: 40px 8px 0;
 
+  text-align: center;
+
+  @extend .clearfix;
+  span,
+  a {
+    font-family: Solomon-Sans-Normal,sans-serif;
+    font-size: 16px;
+    line-height: 52px;
+
+    display: inline-block;
+
+    height: 52px;
+    padding: 0 25px;
+
+    text-align: center;
+    text-decoration: none;
+margin: 0 5px;
+    color: #000;
+    border: 1px solid #000;
+    &.next {
+      float: right;
+      margin-right: 0;
+    }
+    &.prev {
+      margin-left: 0;
+      float: left;
+    }
+    &.current {
+      color: #e77983;
+      border-color: #e77983;
+    }
+    &:hover {
+      opacity: .7;
+    }
+  }
+}
 #single-new {
   .sidebar .news-list li {
     img {

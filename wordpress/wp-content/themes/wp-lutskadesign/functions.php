@@ -46,10 +46,10 @@ add_action('init', 'wpeHeaderScripts'); // Add Scripts to wp_head
 function wpeHeaderScripts() {
   if (!is_admin()) {
     wp_deregister_script('jquery');
-    wp_register_script('jquery', get_template_directory_uri() . '/js/jquery-2.1.0.min.js', array(), '2.1.0');
+    wp_register_script('jquery', '//cdnjs.cloudflare.com/ajax/libs/jquery/1.12.4/jquery.min.js', array(), '1.12.4');
     wp_enqueue_script('jquery');
 
-    wp_register_script('jquery-migrate', get_template_directory_uri() . '/js/jquery-migrate-1.2.1.min.js', array(), '1.2.1');
+    wp_register_script('jquery-migrate', '//cdnjs.cloudflare.com/ajax/libs/jquery-migrate/3.0.0/jquery-migrate.min.js', array(), '3.0.0');
     wp_enqueue_script('jquery-migrate');
 
     wp_register_script('modernizr', '//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js', array(), '2.8.3');
@@ -749,7 +749,42 @@ function disable_emojicons_tinymce( $plugins ) {
   }
 }
 
+function true_load_posts(){
+  $args = unserialize(stripslashes($_POST['query']));
+  $args['paged'] = $_POST['page'] + 1; // следующая страница
+  $args['post_status'] = 'publish';
+  $q = new WP_Query($args);
+  if( $q->have_posts() ):
+    while($q->have_posts()): $q->the_post();
+      /*
+       * Со строчки 13 по 27 идет HTML шаблон поста, максимально приближенный к теме TwentyTen.
+       * Для своей темы вы конечно же можете использовать другой код HTML.
+       */
+      ?>
+  <div id="post-<?php echo $q->post->ID ?>" class="item post-<?php echo $q->post->ID ?> hentry">
+    <a class="blog-img black-hover" href="<?php the_permalink(); ?>">
+      <?php if ( has_post_thumbnail()) :
+        the_post_thumbnail('medium');
+      else: ?>
+        <img src="<?php echo catchFirstImage(); ?>" title="<?php the_title(); ?>" alt="<?php the_title(); ?>" />
+      <?php endif; ?>
+      </a>
+    <div class="excerpt">
+      <h2><a href="<?php the_permalink(); ?>"><?php echo $q->post->post_title ?></a></h2>
+      <?php wpeExcerpt('wpeExcerpt40'); ?>
+      <p class="date"><?php the_time('j F Y'); ?></p>
+    </div>
+  </div>
+      <?php
+    endwhile;
+  endif;
+  wp_reset_postdata();
+  die();
+}
 
+
+add_action('wp_ajax_loadmore', 'true_load_posts');
+add_action('wp_ajax_nopriv_loadmore', 'true_load_posts');
 
 
 
@@ -757,3 +792,6 @@ function disable_emojicons_tinymce( $plugins ) {
 
 
 ?>
+
+
+

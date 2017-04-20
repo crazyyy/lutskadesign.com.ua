@@ -927,38 +927,6 @@ $(document).ready(function() {
   });
 });
 
-function h100PercentHack() {
-  // var headerHeight = (window.innerWidth>1023)? 88:78;
-  document.getElementById("fullscreen").innerHTML = '.fullscreen{height:' + (window.innerHeight) + 'px}';
-}
-// "100% height class" hack for class .fullscreen
-var el = document.createElement('style');
-el.id = 'fullscreen';
-el.type = 'text/css';
-document.getElementsByTagName('head')[0].appendChild(el);
-h100PercentHack();
-
-// var isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
-var isMobile = navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(Android)|(PlayBook)|(BB10)|(BlackBerry)|(Opera Mini)|(IEMobile)|(webOS)|(MeeGo)/i);
-if (isMobile) {
-  window.addEventListener("orientationchange", function() {
-    h100PercentHack();
-  }, false);
-} else {
-  window.onresize = h100PercentHack;
-}
-
-// addition for swipebox, closing img on click on bg
-$(function() {
-  $(document.body)
-    .on('click touchend', '#swipebox-slider .current img', function(e) {
-      return false;
-    })
-    .on('click touchend', '#swipebox-slider .current', function(e) {
-      $('#swipebox-close').trigger('click');
-    });
-});
-
 
 var empSwiper = undefined;
 
@@ -1004,4 +972,50 @@ $(document).ready(function() {
 });
 $(window).on('resize', function() {
   employeeSwiper();
+});
+
+
+jQuery(function($) {
+  $(window).scroll(function() {
+    var bottomOffset = 2000; // отступ от нижней границы сайта, до которого должен доскроллить пользователь, чтобы подгрузились новые посты
+    var data = {
+      'action': 'loadmore',
+      'query': true_posts,
+      'page': current_page
+    };
+    if ($(document).scrollTop() > ($(document).height() - bottomOffset) && !$('body').hasClass('loading')) {
+      $.ajax({
+        url: ajaxurl,
+        data: data,
+        type: 'POST',
+        beforeSend: function(xhr) {
+          $('body').addClass('loading');
+        },
+        success: function(data) {
+          if (data) {
+            $('#ajax_content_storage').append(data);
+            $('body').removeClass('loading');
+            current_page++;
+
+            var $blog_container = $('#ajax_content_storage');
+
+$('#ajax_content_storage').show('fast')
+            $blog_container.isotope({
+              itemSelector: '.item',
+              layoutMode: 'masonry',
+              masonry: {
+                columnWidth: "#blog_container .grid-sizer",
+                gutter: "#blog_container .gutter-sizer",
+                itemSelector: '#blog_container .item'
+              }
+            });
+
+
+
+
+          }
+        }
+      });
+    }
+  });
 });
