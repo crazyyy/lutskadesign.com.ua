@@ -963,59 +963,21 @@ function employeeSwiper() {
       $('.employee-swiper .swiper-slide').removeAttr('style');
     }
   }
-
 }
 
 $(document).ready(function() {
   employeeSwiper();
-
 });
 $(window).on('resize', function() {
   employeeSwiper();
 });
 
-
-jQuery(function($) {
-  $(window).scroll(function() {
-    var bottomOffset = 2000; // отступ от нижней границы сайта, до которого должен доскроллить пользователь, чтобы подгрузились новые посты
-    var data = {
-      'action': 'loadmore',
-      'query': true_posts,
-      'page': current_page
-    };
-    if ($(document).scrollTop() > ($(document).height() - bottomOffset) && !$('body').hasClass('loading')) {
-      $.ajax({
-        url: ajaxurl,
-        data: data,
-        type: 'POST',
-        beforeSend: function(xhr) {
-          $('body').addClass('loading');
-        },
-        success: function(data) {
-          if (data) {
-            $('#ajax_content_storage').append(data);
-            $('body').removeClass('loading');
-            current_page++;
-
-            var $blog_container = $('#ajax_content_storage');
-
-$('#ajax_content_storage').show('fast')
-            $blog_container.isotope({
-              itemSelector: '.item',
-              layoutMode: 'masonry',
-              masonry: {
-                columnWidth: "#blog_container .grid-sizer",
-                gutter: "#blog_container .gutter-sizer",
-                itemSelector: '#blog_container .item'
-              }
-            });
-
-
-
-
-          }
-        }
-      });
+$(function() {
+  $('nav#menu').mmenu({
+    drag: true,
+    extensions: {
+      '(min-width: 800px)': ['widescreen']
     }
   });
+  $('.mm-navbar').html('<a href="/" class="site-logo"></a><a href="tel:+380508094570" class="phone">+38(050) 809-45-70</a><a href="tel:+380966610363" class="phone">+38(096) 661-03-63</a>')
 });

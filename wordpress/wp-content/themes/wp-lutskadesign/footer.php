@@ -143,10 +143,12 @@
   <!-- END: svg stuff  -->
   <?php wp_footer(); ?>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/fontsmoothie.min.js" async></script>
+  <script type="text/javascript" src="http://hammerjs.github.io/dist/hammer.min.js"></script>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/vegas.my.js"></script>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/isotope.pkgd.min.js"></script>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.swipebox.js"></script>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/swiper.min.js"></script>
+  <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/jquery.mmenu.all.min.js"></script>
   <script type="text/javascript" src="<?php echo get_template_directory_uri(); ?>/js/scripts.js"></script>
 
 </body>

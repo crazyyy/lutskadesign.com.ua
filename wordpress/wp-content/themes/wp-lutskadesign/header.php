@@ -22,29 +22,10 @@
 </head>
 <body <?php body_class(); ?>>
 
+  <nav id="menu">
+    <?php wpeHeadNav(); ?>
+  </nav>
 
-  <!-- header is fixed -->
-  <header>
-    <div class="wrapper">
-      <div class="logo">
-        <a href="<?php echo home_url(); ?>" rel="home"></a>
-      </div>
-      <nav id="menu">
-        <?php wpeHeadNav(); ?>
-      </nav>
-      <div class="phones">
-        <ul>
-          <li><span class="city"></span>
-            <a href="tel:" class="phone"></a>
-          </li>
-          <li><span class="city"></span><a href="tel:+380675179595" class="phone show-while-scrolling">+38 067 517 95 95</a></li>
-        </ul>
-      </div>
-      <a class="toggle-menu menu-open">
-        <span class="sandwich"></span>
-      </a>
-    </div>
-  </header>
   <div id="mob_menu">
     <nav class="side-menu">
       <a class="toggle-menu menu-close">

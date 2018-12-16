@@ -1,9 +1,4 @@
-/*
-Theme Name: Nataly Bolshakova responsive theme
-Author: eugene.kholyavkin@gmail.com
-*/
-
-/* Captions & aligment */
+@import 'jquery.mmenu.all';
 
 .aligncenter,
 div.aligncenter {
@@ -2493,13 +2488,13 @@ p {
   height: 100%;
   min-height: 100%;
   margin: 0 auto -97px;
-  padding: 88px 0 97px;
+  padding: 20px 0 97px;
 
   background-color: #f4f4f4;
 }
 
 .scrolling #pusher {
-  padding-top: 72px;
+  padding-top: 20px;
 }
 
 .page-template-homepage #pusher {
@@ -3797,7 +3792,7 @@ footer {
 
 .filters {
   margin-left: -7px;
-  padding: 20px 0;
+  padding: 5px 0 20px;
   button {
     font-size: 16px;
 
@@ -4497,20 +4492,23 @@ a.black-hover {
     display: inline-block;
 
     height: 52px;
+    margin: 0 5px;
     padding: 0 25px;
 
     text-align: center;
     text-decoration: none;
-margin: 0 5px;
+
     color: #000;
     border: 1px solid #000;
     &.next {
       float: right;
+
       margin-right: 0;
     }
     &.prev {
-      margin-left: 0;
       float: left;
+
+      margin-left: 0;
     }
     &.current {
       color: #e77983;
@@ -6537,7 +6535,7 @@ header {
   }
 
   #pusher {
-    padding-top: 78px;
+    padding-top: 20px;
   }
 
   .logo a,
@@ -7740,7 +7738,7 @@ header {
   }
 
   #pusher {
-    padding-top: 78px;
+    padding-top: 20px;
   }
 
   .logo a,
@@ -8993,7 +8991,7 @@ header {
 
   #pusher,
   .scrolling #pusher {
-    padding-top: 55px;
+    padding-top: 20px;
   }
 
   .page-template-about-php {
@@ -10423,5 +10421,43 @@ http://wordpress.org/extend/plugins/wp-pagenavi/
     font-weight: bold;
 
     border-color: #000;
+  }
+}
+.mm-panels > .mm-panel:after,
+.mm-panels > .mm-panel:before {
+  height: 0;
+}
+.mm-listview > li > a,
+.mm-listview > li > span {
+  font-size: 20px;
+}
+.mm-listview > li {
+  text-align: center;
+}
+.mm-panel {
+  .mm-navbar {
+    position: relative;
+
+    height: auto;
+    margin-bottom: 30px;
+    padding: 0 20px 20px;
+    .site-logo {
+      display: block;
+
+      width: 100%;
+      height: 403px;
+      margin-bottom: 15px;
+
+      background-image: url(../img/logo.png);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: contain;
+    }
+  }
+  .phone {
+    font-size: 20px;
+    font-weight: 500;
+
+    color: #000 !important;
   }
 }
